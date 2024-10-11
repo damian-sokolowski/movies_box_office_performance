@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fct_revenues
+    columns:
+      - name: movie_key
+        description: "The movie key"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref("dim_movies")
+              field: "movie_key"
+      - name: date_key
+        description: "The date key"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref("dim_date")
+              field: "date_key"
+      - name: revenue
+        description: "The revenue of the movie"
+        data_tests:
+          - not_null
+      - name: theaters
+        description: "The number of theaters the movie was shown in"
+      - name: distributor
+        description: "The distributor of the movie"

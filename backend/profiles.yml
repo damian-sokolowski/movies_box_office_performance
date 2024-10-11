@@ -1,0 +1,12 @@
+movies_box_office_performance:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgresql
+      user: postgres
+      password: movies_box_office_performance
+      port: 5432
+      dbname: movies_box_office_performance
+      schema: dbo
+      threads: 12

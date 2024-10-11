@@ -1,0 +1,88 @@
+version: 2
+
+sources:
+  - name: movies_with_revenues
+    database: movies_box_office_performance  # raw - postgresql doesn't allow cross-database queries
+    schema: raw
+    tables:
+      - name: movies_with_revenues
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+          - name: date
+            description: "The snapshot date of the revenue"
+            data_tests:
+              - not_null
+          - name: title
+            description: "The title of the movie"
+            data_tests:
+              - not_null
+          - name: revenue
+            description: "The revenue of the movie. Note that revenue can change over time"
+            data_tests:
+              - not_null
+          - name: theaters
+            description: "The number of theaters the movie was shown in"
+          - name: distributor
+            description: "The distributor of the movie"
+  - name: omdb
+    database: movies_box_office_performance  # raw - postgresql doesn't allow cross-database queries
+    schema: raw
+    tables:
+      - name: omdb_movies
+        columns:
+          - name: title
+            description: "The title of the movie"
+            data_tests:
+              - not_null
+              - unique
+          - name: year
+            description: "The year of the movie"
+          - name: rated
+            description: "The rating of the movie"
+          - name: released
+            description: "The release date of the movie"
+          - name: runtime
+            description: "The runtime of the movie"
+          - name: genre
+            description: "The genres of the movie"
+          - name: director
+            description: "The director of the movie"
+          - name: writer
+            description: "The writers of the movie"
+          - name: actors
+            description: "The actors of the movie"
+          - name: plot
+            description: "The plot of the movie"
+          - name: language
+            description: "The language of the movie"
+          - name: country
+            description: "The country of the movie"
+          - name: awards
+            description: "The awards of the movie"
+          - name: poster
+            description: "The poster of the movie"
+          - name: metascore
+            description: "The metascore of the movie"
+          - name: imdbrating
+            description: "The IMDB rating of the movie"
+          - name: imdbvotes
+            description: "The IMDB votes of the movie"
+          - name: imdbid
+            description: "The IMDB ID of the movie"
+            data_tests:
+              - unique
+          - name: type
+            description: "The type of the movie"
+          - name: dvd
+            description: "The DVD release date of the movie"
+          - name: boxoffice
+            description: "The box office of the movie"
+          - name: production
+            description: "The production of the movie"
+          - name: website
+            description: "The website of the movie"
+
+

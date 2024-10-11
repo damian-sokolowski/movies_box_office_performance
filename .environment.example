@@ -1,0 +1,6 @@
+export DATABASE_USER=<your_database_user>
+export DATABASE_PASSWORD=<your_database_password>
+export DATABASE_NAME=movies_box_office_performance
+export DATABASE_HOST=postgresql
+export DATABASE_PORT=5432
+export OMDB_API_KEY=<your_omdb_api_key>

@@ -1,0 +1,8 @@
+#!/bin/bash
+echo 'Starting docker container'
+set -e
+
+exec "$@"
+
+exec dbt docs generate
+exec dbt docs serve

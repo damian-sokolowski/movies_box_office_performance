@@ -1,0 +1,66 @@
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  postgresql:
+    container_name: movies_box_office_performance_postgresql
+    image: postgres:16.2
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "movies_box_office_performance"
+      POSTGRES_PASSWORD: "movies_box_office_performance"
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=en_US.UTF-8 --lc-ctype=en_US.UTF-8"
+    networks:
+      - app-tier
+    volumes:
+      - ./.datastore/postgresql:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+  metabase:
+    container_name: movies_box_office_performance_metabase
+    image: metabase/metabase:latest
+    restart: always
+    environment:
+      MB_DB_TYPE: "postgres"
+      MB_DB_DBNAME: "movies_box_office_performance"
+      MB_DB_PORT: 5432
+      MB_DB_USER: "postgres"
+      MB_DB_PASS: "movies_box_office_performance"
+      MB_DB_HOST: "postgresql"
+#      MB_DB_TYPE: "postgres"
+#      MB_DB_DBNAME: "${DB_NAME}"
+#      MB_DB_PORT: "5432"
+#      MB_DB_USER: "${DB_USER}"
+#      MB_DB_PASS: "${DB_PASSWORD}"
+#      MB_DB_HOST: "postgresql"
+    healthcheck:
+      test: curl --fail -I http://localhost:3000/api/health || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-tier
+    volumes:
+      - ./.datastore/metabase:/data
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgresql
+
+  backend:
+    container_name: movies_box_office_performance_backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgresql
+    networks:
+      - app-tier
+    env_file: .environment
+    volumes:
+      - ./backend:/backend
+      - ./datastore_to_import:/backend/datastore_to_import
+    ports:
+      - "8080:8080"
+    user: "1000:1000"

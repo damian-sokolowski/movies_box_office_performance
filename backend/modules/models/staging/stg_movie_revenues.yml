@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_movie_revenues
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+      - name: date
+        description: "The snapshot date of the revenue"
+      - name: title
+        description: "The title of the movie"
+        data_tests:
+          - not_null
+      - name: revenue
+        description: "The revenue of the movie. Note that revenue can change over time"
+        data_tests:
+          - not_null
+      - name: theaters
+        description: "The number of theaters the movie was shown in"
+      - name: distributor
+        description: "The distributor of the movie"

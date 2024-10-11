@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_omdb_movies
+    columns:
+      - name: title
+        description: "The title of the movie"
+        data_tests:
+          - not_null
+          - unique
+      - name: year
+        description: "The year of the movie"
+        data_tests:
+          - not_null
+      - name: rated
+        description: "The rating of the movie"
+      - name: released
+        description: "The release date of the movie"
+        data_tests:
+          - not_null
+      - name: runtime
+        description: "The runtime of the movie"
+        data_tests:
+          - not_null
+      - name: genres
+        description: "The genres of the movie"
+        data_tests:
+          - not_null
+      - name: directors
+        description: "The directors of the movie"
+        data_tests:
+          - not_null
+      - name: writers
+        description: "The writers of the movie"
+        data_tests:
+          - not_null
+      - name: actors
+        description: "The actors of the movie"
+        data_tests:
+          - not_null
+      - name: plot
+        description: "The plot of the movie"
+        data_tests:
+          - not_null
+      - name: languages
+        description: "The languags of the movie"
+        data_tests:
+          - not_null
+      - name: countries
+        description: "The countries of the movie"
+        data_tests:
+          - not_null
+      - name: awards
+        description: "The awards of the movie"
+      - name: poster
+        description: "The poster of the movie"
+      - name: metascore
+        description: "The metascore of the movie"
+      - name: imdbrating
+        description: "The IMDB rating of the movie"
+      - name: imdbvotes
+        description: "The number of IMDB votes for the movie"
+      - name: imdbid
+        description: "The IMDB ID of the movie"
+        data_tests:
+          - not_null
+          - unique
+      - name: type
+        description: "The type of the movie"
+      - name: dvd
+        description: "The DVD release date of the movie"
+      - name: boxoffice
+        description: "The box office performance of the movie"
+      - name: production
+        description: "The production company of the movie"
+      - name: website
+        description: "The website of the movie"

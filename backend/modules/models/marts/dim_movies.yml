@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: dim_movies
+    columns:
+      - name: movie_key
+        description: "Unique identifier for the movie"
+        data_tests:
+          - unique
+          - not_null
+      - name: title
+        description: "The title of the movie"
+        data_tests:
+          - not_null
+          - unique
+      - name: distributor
+        description: "The distributor of the movie"
+      - name: year
+        description: "The year the movie was released"
+      - name: rated
+        description: "The rating of the movie"
+      - name: release
+        description: "The release date of the movie"
+      - name: runtime
+        description: "The runtime of the movie"
+      - name: genres
+        description: "The genres of the movie"
+      - name: directors
+        description: "The directors of the movie"
+      - name: writers
+        description: "The writers of the movie"
+      - name: actors
+        description: "The actors in the movie"
+      - name: plot
+        description: "The plot of the movie"
+      - name: type
+        description: "The type of the movie"
+      - name: boxoffice
+        description: "The box office revenue of the movie"

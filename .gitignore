@@ -1,0 +1,6 @@
+.idea/
+target/
+dbt_packages/
+logs/
+.datastore/
+datastore_to_import/
